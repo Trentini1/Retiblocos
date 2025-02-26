@@ -6,16 +6,6 @@
     <title>Retiblocos - Projetos Realizados</title>
     <link rel="icon" href="mini-logo.png" type="image/png">
     <style>
-        /* Paleta de cores */
-        :root {
-            --azul-escuro: #006699;
-            --laranja: #FF6600;
-            --amarelo-claro: #FFCC33;
-            --vermelho: #CC3333;
-            --branco: #FFFFFF;
-            --cinza: #f2f2f2;
-        }
-
         /* Reset básico */
         * {
             margin: 0;
@@ -24,111 +14,123 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background: url('fundo-site.png') no-repeat center center fixed;
-            background-size: cover;
-            color: var(--branco);
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
             line-height: 1.6;
         }
 
-        /* Navbar */
+        /* Cores e Tipografia */
+        :root {
+            --cor-primaria: #2c3e50;
+            --cor-secundaria: #34495e;
+            --cor-destaque: #e74c3c;
+            --cor-texto: #333;
+            --cor-fundo: #f5f5f5;
+            --cor-branco: #ffffff;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Helvetica', sans-serif;
+            color: var(--cor-primaria);
+        }
+
+        a {
+            color: var(--cor-destaque);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--cor-secundaria);
+        }
+
+        /* Navbar Minimalista */
         .navbar {
             position: fixed;
             top: 0;
             width: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            padding: 10px 0;
+            background-color: var(--cor-branco);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             z-index: 1000;
-            transition: background-color 0.3s;
+            padding: 10px 0;
         }
 
         .navbar-content {
             display: flex;
             justify-content: center;
-            flex-wrap: wrap;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
         .navbar a {
-            color: var(--laranja);
-            text-decoration: none;
+            color: var(--cor-primaria);
             padding: 10px 15px;
-            margin: 5px;
             font-size: 1.1em;
-            border-radius: 5px;
-            transition: background-color 0.3s, color 0.3s;
+            transition: color 0.3s ease;
         }
 
         .navbar a:hover {
-            background-color: rgba(255, 102, 0, 0.3);
-            color: var(--branco);
+            color: var(--cor-destaque);
         }
 
         /* Título Principal */
         .page-title {
             text-align: center;
             font-size: 2.5em;
-            color: var(--laranja);
             margin-top: 100px;
-            padding-top: 40px;
+            padding: 40px 0;
+            color: var(--cor-primaria);
         }
 
         /* Seções de Conteúdo */
-        .content, footer {
-            background-color: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(5px);
+        .content {
+            background-color: var(--cor-branco);
             border-radius: 10px;
-            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
             margin: 20px auto;
             max-width: 90%;
-            color: var(--branco);
-            transition: transform 0.3s ease;
-        }
-
-        .content:hover {
-            transform: scale(1.02);
         }
 
         h2 {
             text-align: center;
-            color: var(--laranja);
+            font-size: 2em;
             margin-bottom: 20px;
+            color: var(--cor-primaria);
         }
 
         /* Galeria de Fotos */
         .gallery {
-            display: flex;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 15px;
-            justify-content: center;
+            padding: 20px;
         }
 
         .gallery img {
             width: 100%;
-            max-width: 200px;
             height: auto;
             border-radius: 10px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         .gallery img:hover {
-            transform: scale(1.1);
-            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
 
         /* Linha do Tempo */
         .timeline-section {
             text-align: center;
             margin: 50px auto;
-            width: 80%;
-            max-width: 1000px;
+            max-width: 800px;
         }
 
         .timeline-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
             position: relative;
             padding-left: 50px;
         }
@@ -136,95 +138,78 @@
         .timeline-container::before {
             content: '';
             position: absolute;
-            width: 4px;
-            background-color: var(--laranja);
+            width: 2px;
+            background-color: var(--cor-destaque);
             top: 0;
             bottom: 0;
             left: 25px;
-            border-radius: 2px;
         }
 
         .timeline-item {
-            display: flex;
-            align-items: center;
-            width: 100%;
-            margin: 20px 0;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.6);
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            background-color: var(--cor-branco);
             border-radius: 10px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
-        .timeline-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background-color: var(--cor-destaque);
+            border-radius: 50%;
+            left: -7.5px;
+            top: 50%;
+            transform: translateY(-50%);
         }
 
-        .timeline-item-content {
-            margin-left: 40px;
-            text-align: left;
-        }
-
-        .timeline-item-content h4 {
-            color: var(--laranja);
+        .timeline-item h4 {
+            color: var(--cor-destaque);
             font-size: 1.5em;
-            margin: 0;
+            margin-bottom: 10px;
         }
 
         /* Depoimentos */
         .depoimentos {
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
+            padding: 20px;
         }
 
         .depoimento-item {
-            width: 100%;
-            max-width: 250px;
-            padding: 15px;
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: var(--cor-branco);
             border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             text-align: center;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .depoimento-item:hover {
-            transform: scale(1.05);
         }
 
         .depoimento-item p {
             font-style: italic;
-            font-size: 0.9em;
+            color: var(--cor-texto);
         }
 
         .depoimento-item h4 {
+            color: var(--cor-destaque);
             margin-top: 10px;
-            font-size: 1em;
-            font-weight: bold;
-            color: var(--laranja);
         }
 
         /* Vídeos */
         .videos-section {
             text-align: center;
             margin: 40px auto;
+            max-width: 800px;
         }
 
         .video-container {
             position: relative;
-            width: 80%;
-            max-width: 800px;
-            margin: auto;
-        }
-
-        .video-wrapper {
-            position: relative;
-            overflow: hidden;
             border-radius: 10px;
-            margin-bottom: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
         .video-wrapper video {
@@ -234,31 +219,22 @@
         }
 
         .video-info {
-            background-color: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(8px);
-            color: var(--branco);
-            padding: 10px;
-            border-radius: 8px;
-            width: 100%;
-            text-align: center;
-            position: relative;
-            margin-top: -5px;
+            padding: 15px;
+            background-color: var(--cor-branco);
         }
 
         .video-info h4 {
-            color: var(--laranja);
-            margin: 0;
+            color: var(--cor-destaque);
+            margin-bottom: 10px;
         }
 
-        /* Setas de Navegação */
         .arrow {
             cursor: pointer;
             position: absolute;
             top: 50%;
             font-size: 2em;
-            color: var(--laranja);
+            color: var(--cor-destaque);
             transform: translateY(-50%);
-            padding: 15px;
             user-select: none;
         }
 
@@ -272,15 +248,15 @@
 
         /* Rodapé */
         .footer {
-            background-color: #000;
-            color: var(--branco);
+            background-color: var(--cor-primaria);
+            color: var(--cor-branco);
             padding: 20px 0;
             text-align: center;
         }
 
         .footer-content {
             max-width: 1200px;
-            margin: auto;
+            margin: 0 auto;
             padding: 0 20px;
         }
 
@@ -290,13 +266,12 @@
         }
 
         .footer-links li {
-            margin: 5px 0;
+            margin: 10px 0;
         }
 
         .footer-links a {
-            color: var(--laranja);
+            color: var(--cor-branco);
             text-decoration: none;
-            transition: color 0.3s;
         }
 
         .footer-links a:hover {
@@ -304,42 +279,31 @@
         }
 
         .footer-bottom {
+            margin-top: 20px;
             font-size: 0.9em;
             color: #ccc;
-            margin-top: 10px;
         }
 
         /* Responsividade */
         @media (max-width: 768px) {
             .navbar-content {
                 flex-direction: column;
-                align-items: center;
             }
 
             .page-title {
                 font-size: 2em;
             }
 
-            .gallery img {
-                max-width: 100%;
+            .gallery {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             }
 
             .timeline-container {
                 padding-left: 20px;
             }
 
-            .timeline-item {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .timeline-item-content {
-                margin-left: 0;
-                margin-top: 10px;
-            }
-
-            .video-container {
-                width: 100%;
+            .timeline-item::before {
+                left: -5px;
             }
 
             .arrow {
@@ -377,28 +341,20 @@
         <h2>Nossa Trajetória</h2>
         <div class="timeline-container">
             <div class="timeline-item">
-                <div class="timeline-item-content">
-                    <h4>2007 - Fundação</h4>
-                    <p>Início das atividades da Retiblocos, focada em retífica de motores diesel pesado.</p>
-                </div>
+                <h4>2007 - Fundação</h4>
+                <p>Início das atividades da Retiblocos, focada em retífica de motores diesel pesado.</p>
             </div>
             <div class="timeline-item">
-                <div class="timeline-item-content">
-                    <h4>2012 - Expansão de Serviços</h4>
-                    <p>Incorporação de novos serviços e início de operações em outros setores.</p>
-                </div>
+                <h4>2012 - Expansão de Serviços</h4>
+                <p>Incorporação de novos serviços e início de operações em outros setores.</p>
             </div>
             <div class="timeline-item">
-                <div class="timeline-item-content">
-                    <h4>2018 - Novo Centro Técnico</h4>
-                    <p>Abertura de um novo centro com tecnologia de ponta para motores industriais.</p>
-                </div>
+                <h4>2018 - Novo Centro Técnico</h4>
+                <p>Abertura de um novo centro com tecnologia de ponta para motores industriais.</p>
             </div>
             <div class="timeline-item">
-                <div class="timeline-item-content">
-                    <h4>2023 - Reconhecimento de Qualidade</h4>
-                    <p>Recebimento de certificações de qualidade e melhoria contínua em processos.</p>
-                </div>
+                <h4>2023 - Reconhecimento de Qualidade</h4>
+                <p>Recebimento de certificações de qualidade e melhoria contínua em processos.</p>
             </div>
         </div>
     </section>
