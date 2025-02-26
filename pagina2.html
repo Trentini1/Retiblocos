@@ -16,67 +16,71 @@
             --cinza: #f2f2f2;
         }
 
-        /* Fundo do site */
-        body {
-            font-family: Arial, sans-serif;
+        /* Reset básico */
+        * {
             margin: 0;
             padding: 0;
-            background: url('fundo-site.png') no-repeat center center fixed;
-            background-size: cover;
-            color: #000;
-            background-blend-mode: multiply;
+            box-sizing: border-box;
         }
 
-       /* Navbar */
-.navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.8); /* Fundo escuro */
-    padding: 10px 0;
-    z-index: 10;
-    transition: background-color 0.3s; /* Efeito de transição */
-}
+        body {
+            font-family: Arial, sans-serif;
+            background: url('fundo-site.png') no-repeat center center fixed;
+            background-size: cover;
+            color: var(--branco);
+            line-height: 1.6;
+        }
 
-.navbar-content {
-    display: flex;
-    justify-content: center; /* Centraliza os itens */
-}
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 10px 0;
+            z-index: 1000;
+            transition: background-color 0.3s;
+        }
 
-.navbar a {
-    color: #FF6600; /* Cor do texto */
-    text-decoration: none; /* Remove sublinhado */
-    padding: 15px 20px;
-    margin: 0 10px; /* Espaçamento entre os links */
-    font-family: 'Arial', sans-serif; /* Fonte personalizada */
-    font-size: 1.1em; /* Tamanho da fonte */
-    border-radius: 5px; /* Bordas arredondadas */
-    transition: background-color 0.3s, color 0.3s; /* Efeitos de transição */
-}
+        .navbar-content {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
 
-.navbar a:hover {
-    background-color: rgba(255, 102, 0, 0.3); /* Cor de fundo ao passar o mouse */
-    color: #fff; /* Cor do texto ao passar o mouse */
-}
+        .navbar a {
+            color: var(--laranja);
+            text-decoration: none;
+            padding: 10px 15px;
+            margin: 5px;
+            font-size: 1.1em;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .navbar a:hover {
+            background-color: rgba(255, 102, 0, 0.3);
+            color: var(--branco);
+        }
 
         /* Título Principal */
         .page-title {
             text-align: center;
             font-size: 2.5em;
             color: var(--laranja);
-            margin-top: 100px; /* Ajustado para dar espaço após a navbar */
+            margin-top: 100px;
             padding-top: 40px;
         }
 
-        /* Áreas de conteúdo */
+        /* Seções de Conteúdo */
         .content, footer {
-            background-color: rgba(0, 0, 0, 0.6); /* Fundo preto */
-            backdrop-filter: blur(5px); /* Desfoque */
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
             border-radius: 10px;
             padding: 20px;
             margin: 20px auto;
             max-width: 90%;
-            color: #fff; /* Texto branco */
+            color: var(--branco);
             transition: transform 0.3s ease;
         }
 
@@ -90,7 +94,7 @@
             margin-bottom: 20px;
         }
 
-        /* Estilo da galeria de fotos */
+        /* Galeria de Fotos */
         .gallery {
             display: flex;
             flex-wrap: wrap;
@@ -99,9 +103,9 @@
         }
 
         .gallery img {
-            width: 200px;
-            height: 150px;
-            object-fit: cover;
+            width: 100%;
+            max-width: 200px;
+            height: auto;
             border-radius: 10px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer;
@@ -113,19 +117,12 @@
             box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
         }
 
-        /* Estilos principais para a linha do tempo */
+        /* Linha do Tempo */
         .timeline-section {
             text-align: center;
             margin: 50px auto;
             width: 80%;
             max-width: 1000px;
-        }
-
-        .timeline-title {
-            font-size: 2.5em;
-            color: #FF6600;
-            margin-bottom: 40px;
-            font-weight: bold;
         }
 
         .timeline-container {
@@ -140,7 +137,7 @@
             content: '';
             position: absolute;
             width: 4px;
-            background-color: #FF6600;
+            background-color: var(--laranja);
             top: 0;
             bottom: 0;
             left: 25px;
@@ -153,7 +150,7 @@
             width: 100%;
             margin: 20px 0;
             padding: 20px;
-            background: rgba(0, 0, 0, 0.6); /* Fundo preto */
+            background: rgba(0, 0, 0, 0.6);
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -167,21 +164,15 @@
         .timeline-item-content {
             margin-left: 40px;
             text-align: left;
-            color: #FFFFFF; /* Cor do texto alterada para branco */
         }
 
         .timeline-item-content h4 {
-            color: #FF6600; /* Mantendo a cor do título, se desejar */
+            color: var(--laranja);
             font-size: 1.5em;
             margin: 0;
-            font-weight: bold;
         }
 
-        .timeline-item-content p {
-            color: #FFFFFF; /* Cor do parágrafo alterada para branco */
-        }
-
-        /* Seção de Depoimentos */
+        /* Depoimentos */
         .depoimentos {
             display: flex;
             gap: 20px;
@@ -190,9 +181,10 @@
         }
 
         .depoimento-item {
-            width: 250px;
+            width: 100%;
+            max-width: 250px;
             padding: 15px;
-            background-color: rgba(255, 255, 255, 0.1); /* Fundo transparente */
+            background-color: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             text-align: center;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
@@ -215,16 +207,10 @@
             color: var(--laranja);
         }
 
-        /* Estilo para vídeos */
+        /* Vídeos */
         .videos-section {
             text-align: center;
             margin: 40px auto;
-        }
-
-        .videos-title {
-            color: #FF6600;
-            font-size: 2em;
-            margin-bottom: 20px;
         }
 
         .video-container {
@@ -250,7 +236,7 @@
         .video-info {
             background-color: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(8px);
-            color: #FFFFFF;
+            color: var(--branco);
             padding: 10px;
             border-radius: 8px;
             width: 100%;
@@ -260,17 +246,17 @@
         }
 
         .video-info h4 {
-            color: #FF6600;
+            color: var(--laranja);
             margin: 0;
         }
 
-        /* Setas de navegação */
+        /* Setas de Navegação */
         .arrow {
             cursor: pointer;
             position: absolute;
             top: 50%;
             font-size: 2em;
-            color: #FF6600;
+            color: var(--laranja);
             transform: translateY(-50%);
             padding: 15px;
             user-select: none;
@@ -284,112 +270,97 @@
             right: -40px;
         }
 
-        /* Estilo do rodapé */
+        /* Rodapé */
         .footer {
-            background-color: #000; /* Fundo preto */
-            color: #fff; /* Texto branco */
-            padding: 20px 0; /* Espaçamento vertical */
-            position: relative; /* Posição relativa para que o rodapé flua com o conteúdo */
-            left: 0; /* Alinhado à esquerda */
-            right: 0; /* Alinhado à direita */
-            bottom: 0; /* Na parte inferior */
+            background-color: #000;
+            color: var(--branco);
+            padding: 20px 0;
+            text-align: center;
         }
 
         .footer-content {
-            display: flex; /* Flexbox para layout */
-            justify-content: space-between; /* Espaçamento entre os itens */
-            align-items: center; /* Alinhamento vertical */
-            max-width: 1200px; /* Limite de largura (ajuste conforme necessário) */
-            margin: auto; /* Centraliza horizontalmente */
-            padding: 0 20px; /* Adiciona espaçamento nas laterais */
-        }
-
-        .footer-logo {
-            text-align: left; /* Alinhamento à esquerda */
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 20px;
         }
 
         .footer-links {
-            list-style: none; /* Remove marcadores */
-            padding: 0; /* Remove padding */
+            list-style: none;
+            padding: 0;
         }
 
         .footer-links li {
-            margin: 5px 0; /* Espaçamento entre links */
+            margin: 5px 0;
         }
 
         .footer-links a {
-            color: #FF6600; /* Cor do link */
-            text-decoration: none; /* Remove sublinhado */
-            transition: color 0.3s; /* Transição suave */
+            color: var(--laranja);
+            text-decoration: none;
+            transition: color 0.3s;
         }
 
         .footer-links a:hover {
-            text-decoration: underline; /* Sublinhado ao passar o mouse */
-        }
-
-        .footer-contact {
-            text-align: left; /* Alinhamento à esquerda */
+            text-decoration: underline;
         }
 
         .footer-bottom {
-            text-align: center; /* Centraliza texto */
-            font-size: 0.9em; /* Tamanho da fonte */
-            color: #ccc; /* Cor do texto */
-            margin-top: 10px; /* Espaçamento superior */
+            font-size: 0.9em;
+            color: #ccc;
+            margin-top: 10px;
         }
 
-        /* Media Queries para Responsividade */
+        /* Responsividade */
         @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column; /* Muda a direção para coluna em telas pequenas */
-                padding: 10px 0; /* Menos padding */
+            .navbar-content {
+                flex-direction: column;
+                align-items: center;
             }
 
             .page-title {
-                font-size: 2em; /* Tamanho da fonte do título reduzido */
-            }
-
-            .content {
-                padding: 15px; /* Menos padding em telas menores */
-                margin: 10px auto; /* Ajuste nas margens */
+                font-size: 2em;
             }
 
             .gallery img {
-                width: 100%; /* Faz com que a imagem ocupe toda a largura da coluna */
-                height: auto; /* Mantém a proporção da imagem */
+                max-width: 100%;
             }
 
-            .timeline-section {
-                width: 100%; /* Faz a seção ocupar toda a largura */
-                margin: 10px auto; /* Centraliza */
+            .timeline-container {
+                padding-left: 20px;
             }
 
             .timeline-item {
-                flex-direction: column; /* Altera para coluna em telas pequenas */
-                padding: 10px; /* Reduz o padding */
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .timeline-item-content {
+                margin-left: 0;
+                margin-top: 10px;
             }
 
             .video-container {
-                width: 100%; /* Aumenta a largura para 100% */
+                width: 100%;
+            }
+
+            .arrow {
+                font-size: 1.5em;
             }
         }
     </style>
 </head>
 <body>
-
     <!-- Navbar -->
-<nav class="navbar" id="navbar">
-    <div class="navbar-content">
-        <a href="index.html">Página Principal</a>
-        <a href="pagina2.html">Serviços Feitos</a>
-    </div>
-</nav>
-
+    <nav class="navbar">
+        <div class="navbar-content">
+            <a href="index.html">Página Principal</a>
+            <a href="pagina2.html">Serviços Feitos</a>
+        </div>
+    </nav>
 
     <!-- Título Principal -->
     <h1 class="page-title">Projetos Realizados pela Retiblocos</h1>
 
-    <!-- Seção de Galeria de Fotos -->
+    <!-- Galeria de Fotos -->
     <section class="content">
         <h2>Galeria de Fotos</h2>
         <div class="gallery">
@@ -401,9 +372,9 @@
         </div>
     </section>
 
-    <!-- Seção de Linha do Tempo -->
+    <!-- Linha do Tempo -->
     <section class="timeline-section">
-        <h2 class="timeline-title">Nossa Trajetória</h2>
+        <h2>Nossa Trajetória</h2>
         <div class="timeline-container">
             <div class="timeline-item">
                 <div class="timeline-item-content">
@@ -432,7 +403,7 @@
         </div>
     </section>
 
-    <!-- Seção de Depoimentos -->
+    <!-- Depoimentos -->
     <section class="content">
         <h2>O Que Nossos Clientes Dizem</h2>
         <div class="depoimentos">
@@ -451,12 +422,12 @@
         </div>
     </section>
 
-    <!-- Seção de Vídeos -->
+    <!-- Vídeos -->
     <div class="videos-section">
-        <h2 class="videos-title">Projetos de Retífica Realizados</h2>
+        <h2>Projetos de Retífica Realizados</h2>
         <div class="video-container">
-            <div class="video-wrapper" id="videoWrapper">
-                <video controls>
+            <div class="video-wrapper">
+                <video controls id="videoPlayer">
                     <source src="jhondeere.mp4" type="video/mp4">
                     Seu navegador não suporta a tag de vídeo.
                 </video>
@@ -483,8 +454,8 @@
                 </ul>
             </div>
             <div class="footer-bottom">
-                &copy; 2024 Retiblocos. All rights reserved. <br>
-                Website developed by Trentini
+                &copy; 2024 Retiblocos. Todos os direitos reservados. <br>
+                Desenvolvido por Trentini
             </div>
         </div>
     </footer>
@@ -500,7 +471,7 @@
                 src: 'maquina-johndeere.mp4',
                 title: 'Escavadeira John Deere',
                 description: 'Descrição: Teste de performance no motor John Deere.'
-            }, 
+            },
             {
                 src: 'cummins.mp4',
                 title: 'Motor Cummins ISB 6CC',
@@ -509,15 +480,15 @@
         ];
 
         let currentVideoIndex = 0;
+        const videoPlayer = document.getElementById('videoPlayer');
+        const videoTitle = document.getElementById('videoTitle');
+        const videoDescription = document.getElementById('videoDescription');
 
         function updateVideo() {
-            const videoElement = document.querySelector('.video-wrapper video');
-            const videoTitle = document.getElementById('videoTitle');
-            const videoDescription = document.getElementById('videoDescription');
-
-            videoElement.src = videos[currentVideoIndex].src;
+            videoPlayer.src = videos[currentVideoIndex].src;
             videoTitle.textContent = videos[currentVideoIndex].title;
             videoDescription.textContent = videos[currentVideoIndex].description;
+            videoPlayer.load();
         }
 
         function nextVideo() {
@@ -531,8 +502,6 @@
         }
 
         document.addEventListener('DOMContentLoaded', updateVideo);
-
-
     </script>
 </body>
 </html>
