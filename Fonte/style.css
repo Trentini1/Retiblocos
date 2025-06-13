@@ -267,6 +267,8 @@ section { padding: 6rem 0; overflow: hidden; }
     color: white;
     border-color: var(--color-accent);
 }
+.tag-list li.deutz { color: #0087D1; } /* Exemplo de cor para Deutz */
+.tag-list li.weichai { color: #D42E28; } /* Exemplo de cor para Weichai */
 
 @keyframes scroll {
     to {
