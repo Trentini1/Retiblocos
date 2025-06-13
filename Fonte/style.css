@@ -129,15 +129,15 @@ section { padding: 6rem 0; overflow: hidden; }
     animation: pulse-glow 4s infinite ease-in-out;
 }
 
-/* === LÓGICA DE TROCA DE LOGO (CORRIGIDA) === */
+/* === LÓGICA DE TROCA DE LOGO (VERSÃO FINAL CORRIGIDA) === */
 [data-theme="dark"] .nav-logo,
 [data-theme="dark"] .hero-logo {
-    background-image: url('../fotos/logo-retiblocosBRANCO.png');
+    background-image: url('../fotos/logo-retiblocosBRANCO.png'); /* TEMA ESCURO USA LOGO BRANCO */
 }
 
 [data-theme="light"] .nav-logo,
 [data-theme="light"] .hero-logo {
-    background-image: url('../fotos/logo-retiblocosPRETO.png');
+    background-image: url('../fotos/logo-retiblocosPRETO.png'); /* TEMA CLARO USA LOGO PRETO */
 }
 
 .hero-content h1 {
@@ -148,6 +148,8 @@ section { padding: 6rem 0; overflow: hidden; }
     animation: blink 0.7s infinite;
     color: var(--color-accent);
 }
+
+/* ... O RESTO DO CSS CONTINUA IGUAL ... */
 
 /* SEÇÃO SOBRE */
 .about-section { background-color: var(--bg-secondary); }
