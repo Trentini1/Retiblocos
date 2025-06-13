@@ -63,7 +63,7 @@ section { padding: 6rem 0; overflow: hidden; }
 }
 .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; }
 
-/* === REGRAS PARA O LOGO NO CABEÇALHO === */
+/* REGRAS PARA O LOGO NO CABEÇALHO */
 .nav-logo {
     display: block;
     width: 200px;
@@ -117,7 +117,7 @@ section { padding: 6rem 0; overflow: hidden; }
     background: linear-gradient(180deg, var(--bg-main) 0%, #dde4e9 100%);
 }
 
-/* === REGRAS PARA O LOGO NO HERO === */
+/* REGRAS PARA O LOGO NO HERO */
 .hero-logo {
     width: 100%;
     max-width: 450px;
@@ -129,7 +129,7 @@ section { padding: 6rem 0; overflow: hidden; }
     animation: pulse-glow 4s infinite ease-in-out;
 }
 
-/* === LÓGICA DE TROCA DE LOGO (ABORDAGEM DIRETA) === */
+/* === LÓGICA DE TROCA DE LOGO (CORRIGIDA) === */
 [data-theme="dark"] .nav-logo,
 [data-theme="dark"] .hero-logo {
     background-image: url('../fotos/logo-retiblocosBRANCO.png');
