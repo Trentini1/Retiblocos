@@ -1,5 +1,45 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    // --- LÓGICA FINAL E DEFINITIVA PARA TROCA DE LOGO ---
+    const themeToggle = document.getElementById('theme-toggle');
+    const navLogo = document.getElementById('nav-logo-container');
+    const heroLogo = document.getElementById('hero-logo-container');
+    const logoBrancoUrl = "url('fotos/logo-retiblocosBRANCO.png')";
+    const logoPretoUrl = "url('fotos/logo-retiblocosPRETO.png')";
+
+    function aplicarLogoPeloTema() {
+        const temaAtual = document.documentElement.getAttribute('data-theme');
+        if (temaAtual === 'dark') {
+            if (navLogo) navLogo.style.backgroundImage = logoBrancoUrl;
+            if (heroLogo) heroLogo.style.backgroundImage = logoBrancoUrl;
+        } else {
+            if (navLogo) navLogo.style.backgroundImage = logoPretoUrl;
+            if (heroLogo) heroLogo.style.backgroundImage = logoPretoUrl;
+        }
+    }
+
+    // --- SELETOR DE TEMA (DARK/LIGHT) ---
+    // ESTA É A LINHA QUE FOI ALTERADA
+    const savedTheme = localStorage.getItem('theme') || 'dark'; // Define 'dark' como padrão
+
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    if(themeToggle) {
+        themeToggle.checked = savedTheme === 'light';
+    }
+    
+    // Aplica o logo correto quando a página carrega
+    aplicarLogoPeloTema();
+    
+    if(themeToggle) {
+        themeToggle.addEventListener('change', () => {
+            const newTheme = themeToggle.checked ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            // Reaplica o logo sempre que o tema muda
+            aplicarLogoPeloTema(); 
+        });
+    }
+
     // --- CÁLCULO AUTOMÁTICO DOS ANOS DE EXPERIÊNCIA ---
     const anoFundacao = 2007;
     const anoAtual = new Date().getFullYear();
@@ -9,12 +49,14 @@ document.addEventListener('DOMContentLoaded', () => {
         elementoAnos.setAttribute('data-target', anosDeExperiencia);
     }
 
-    // --- EFEITO MÁQUINA DE ESCREVER ---
+    // --- O RESTO DO SEU CÓDIGO CONTINUA IGUAL ---
+
+    // EFEITO MÁQUINA DE ESCREVER
     const sloganElement = document.getElementById('typing-slogan');
     const sloganText = "Excelência em Retífica de Motores Diesel";
     let i = 0;
     function typeSlogan() {
-        if (i < sloganText.length) {
+        if (sloganElement && i < sloganText.length) {
             sloganElement.textContent += sloganText.charAt(i);
             i++;
             setTimeout(typeSlogan, 80);
@@ -24,17 +66,19 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(typeSlogan, 1000);
     }
 
-    // --- HEADER MUDA DE COR NO SCROLL ---
+    // HEADER MUDA DE COR NO SCROLL
     const header = document.querySelector('.main-header');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    });
+    if(header){
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    }
 
-    // --- ANIMAÇÕES GERAIS DE SCROLL (Fade, Zoom, Slide) ---
+    // ANIMAÇÕES GERAIS DE SCROLL (Fade, Zoom, Slide)
     const generalObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -46,8 +90,8 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.animate-on-scroll').forEach(el => {
         generalObserver.observe(el);
     });
-
-    // --- LÓGICA CORRIGIDA E DEDICADA PARA OS CONTADORES ---
+    
+    // LÓGICA PARA OS CONTADORES
     const statsCounter = document.querySelector('.stats-counter');
     let countersStarted = false;
 
@@ -56,10 +100,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (entry.isIntersecting && !countersStarted) {
                 startCounters();
                 countersStarted = true;
-                observer.unobserve(entry.target); // Para de observar depois de ativar uma vez
+                observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.5 }); // Inicia quando 50% do elemento estiver visível
+    }, { threshold: 0.5 });
 
     if (statsCounter) {
         counterObserver.observe(statsCounter);
@@ -89,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- FORMULÁRIO MULTI-STEP ---
+    // FORMULÁRIO MULTI-STEP
     const quoteForm = document.getElementById('quote-form');
     if (quoteForm) {
         const stepsContainer = quoteForm.querySelector('.form-steps-container');
@@ -127,42 +171,36 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     
-    // --- BARRA DE PROGRESSO NO SCROLL ---
+    // BARRA DE PROGRESSO NO SCROLL
     const progressBar = document.getElementById('scroll-progress-bar');
-    window.addEventListener('scroll', () => {
-        const scrollTop = document.documentElement.scrollTop;
-        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const scrollProgress = (scrollTop / scrollHeight) * 100;
-        progressBar.style.width = `${scrollProgress}%`;
-    });
+    if(progressBar){
+        window.addEventListener('scroll', () => {
+            const scrollTop = document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollProgress = (scrollTop / scrollHeight) * 100;
+            progressBar.style.width = `${scrollProgress}%`;
+        });
+    }
 
-    // --- SELETOR DE TEMA (DARK/LIGHT) ---
-    const themeToggle = document.getElementById('theme-toggle');
-    const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    themeToggle.checked = savedTheme === 'light';
-    
-    themeToggle.addEventListener('change', () => {
-        const newTheme = themeToggle.checked ? 'light' : 'dark';
-        document.documentElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-    });
-
-    // --- SCROLL SUAVE PARA ÂNCORAS ---
+    // SCROLL SUAVE PARA ÂNCORAS
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
+            const targetElement = document.querySelector(this.getAttribute('href'));
+            if(targetElement){
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
         });
     });
 
-    // --- LÓGICA PARA O CARROSSEL DE LOGOS INFINITO ---
+    // LÓGICA PARA O CARROSSEL DE LOGOS INFINITO
     const scrollers = document.querySelectorAll(".scroller");
-
-    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        addAnimation();
+    if(scrollers.length > 0){
+        if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            addAnimation();
+        }
     }
 
     function addAnimation() {
@@ -179,4 +217,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-}); // Fim do document.addEventListener
+});
