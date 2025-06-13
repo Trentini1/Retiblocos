@@ -16,14 +16,12 @@
     --font-main: 'Helvetica', 'Arial', sans-serif;
 }
 
-/* === LÓGICA DO LOGO DEFINIDA AQUI === */
 [data-theme="dark"] {
     --bg-main: var(--color-dark-bg);
     --bg-secondary: var(--color-dark-bg-secondary);
     --text-main: var(--color-dark-text);
     --text-secondary: var(--color-dark-text-secondary);
     --border-color: var(--color-dark-border);
-    --logo-image: url('../fotos/logo-retiblocosBRANCO.png'); /* Logo para tema escuro */
 }
 
 [data-theme="light"] {
@@ -32,7 +30,6 @@
     --text-main: var(--color-light-text);
     --text-secondary: var(--color-light-text-secondary);
     --border-color: var(--color-light-border);
-    --logo-image: url('../fotos/logo-retiblocosPRETO.png'); /* Logo para tema claro */
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -66,12 +63,11 @@ section { padding: 6rem 0; overflow: hidden; }
 }
 .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; }
 
-/* === REGRAS CORRIGIDAS PARA O LOGO NO CABEÇALHO === */
+/* === REGRAS PARA O LOGO NO CABEÇALHO === */
 .nav-logo {
     display: block;
-    width: 200px; /* Largura do logo no cabeçalho */
-    height: 40px; /* Altura do logo no cabeçalho */
-    background-image: var(--logo-image); /* Aplica a variável do logo */
+    width: 200px;
+    height: 40px;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center left;
@@ -121,17 +117,27 @@ section { padding: 6rem 0; overflow: hidden; }
     background: linear-gradient(180deg, var(--bg-main) 0%, #dde4e9 100%);
 }
 
-/* === REGRAS CORRIGIDAS PARA O LOGO NO HERO === */
+/* === REGRAS PARA O LOGO NO HERO === */
 .hero-logo {
     width: 100%;
     max-width: 450px;
     height: 120px;
     margin: 0 auto 2rem auto;
-    background-image: var(--logo-image); /* Aplica a variável do logo */
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     animation: pulse-glow 4s infinite ease-in-out;
+}
+
+/* === LÓGICA DE TROCA DE LOGO (ABORDAGEM DIRETA) === */
+[data-theme="dark"] .nav-logo,
+[data-theme="dark"] .hero-logo {
+    background-image: url('../fotos/logo-retiblocosBRANCO.png');
+}
+
+[data-theme="light"] .nav-logo,
+[data-theme="light"] .hero-logo {
+    background-image: url('../fotos/logo-retiblocosPRETO.png');
 }
 
 .hero-content h1 {
