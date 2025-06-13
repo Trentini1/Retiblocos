@@ -102,7 +102,6 @@ section { padding: 6rem 0; overflow: hidden; }
 .theme-toggle-label .fa-moon { color: #f1c40f; }
 .theme-toggle-label .fa-sun { color: #f39c12; }
 
-
 /* TELA INICIAL (HERO) */
 .hero-section {
     height: 100vh;
@@ -111,10 +110,9 @@ section { padding: 6rem 0; overflow: hidden; }
     justify-content: center;
     text-align: center;
     background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../fotos/fundo-hero.jpg');
-    background-size: cover;      /* Garante que a imagem cubra toda a área */
-    background-position: center; /* Centraliza a imagem */
+    background-size: cover;
+    background-position: center;
 }
-/* CORREÇÃO 1: Mantém a imagem de fundo no tema claro, mas com um filtro branco */
 [data-theme="light"] .hero-section {
     background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('../fotos/fundo-hero.jpg');
 }
@@ -190,7 +188,7 @@ section { padding: 6rem 0; overflow: hidden; }
 }
 .icon-gear::after { transform: rotate(90deg); }
 
-/* ============== NOVA SEÇÃO ESPECIALISTAS (CARROSSEL) ============== */
+/* SEÇÃO ESPECIALISTAS (CARROSSEL) */
 .experts-section { 
     background-color: var(--bg-secondary);
     padding: 6rem 0;
@@ -255,6 +253,27 @@ section { padding: 6rem 0; overflow: hidden; }
         transform: translate(-50%);
     }
 }
+
+/* ============== NOVA SEÇÃO INSTAGRAM ADICIONADA AQUI ============== */
+.instagram-section {
+    background-color: var(--bg-main);
+    padding: 6rem 0;
+    border-top: 1px solid var(--border-color);
+}
+
+.instagram-section h2 {
+    margin-bottom: 1rem;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 3rem auto;
+}
+
+
 /* SEÇÃO ORÇAMENTO */
 .quote-form {
     max-width: 800px; margin: auto; background: var(--bg-secondary);
@@ -305,7 +324,11 @@ button:hover { transform: scale(1.05); }
 }
 @keyframes blink { 50% { opacity: 0; } }
 @keyframes rotate-gear { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-@keyframes pulse-logo { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
+@keyframes scroll {
+    to {
+        transform: translate(-50%);
+    }
+}
 
 .animate-on-scroll { opacity: 0; transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
 .animate-on-scroll[data-animation="slide-in-left"] { transform: translateX(-50px); }
@@ -313,10 +336,9 @@ button:hover { transform: scale(1.05); }
 .animate-on-scroll[data-animation="zoom-in"] { transform: scale(0.9); }
 .animate-on-scroll.visible { opacity: 1; transform: translate(0, 0) scale(1); }
 
-/* CORREÇÃO 2: Regras de responsividade atualizadas */
 @media (max-width: 768px) {
     h2 { font-size: 2rem; }
-    .nav-menu { display: none; /* Implementar menu hamburguer em uma próxima etapa */ }
+    .nav-menu { display: none; }
     .about-content, .contact-wrapper { grid-template-columns: 1fr; }
     .services-grid { grid-template-columns: 1fr; }
     .stats-counter { flex-direction: column; gap: 2rem; }
