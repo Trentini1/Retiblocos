@@ -22,6 +22,7 @@
     --text-main: var(--color-dark-text);
     --text-secondary: var(--color-dark-text-secondary);
     --border-color: var(--color-dark-border);
+    --logo-image: url('../fotos/logo-retiblocosBRANCO.png'); /* Logo para tema escuro */
 }
 
 [data-theme="light"] {
@@ -30,6 +31,7 @@
     --text-main: var(--color-light-text);
     --text-secondary: var(--color-light-text-secondary);
     --border-color: var(--color-light-border);
+    --logo-image: url('../fotos/logo-retiblocosPRETO.png'); /* Logo para tema claro */
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -46,20 +48,11 @@ section { padding: 6rem 0; overflow: hidden; }
 
 /* BARRA DE PROGRESSO E HEADER */
 #scroll-progress-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 4px;
-    background: var(--color-accent);
-    width: 0%;
-    z-index: 1001;
+    position: fixed; top: 0; left: 0; height: 4px;
+    background: var(--color-accent); width: 0%; z-index: 1001;
 }
 .main-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
+    position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
     transition: background-color 0.3s, box-shadow 0.3s;
 }
 .main-header.scrolled {
@@ -71,11 +64,23 @@ section { padding: 6rem 0; overflow: hidden; }
     background-color: rgba(255, 255, 255, 0.8);
 }
 .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; }
-.nav-logo { height: 40px; transition: transform 0.3s; }
-.nav-logo:hover { transform: scale(1.1); }
+
+/* === NOVAS REGRAS PARA O LOGO NO CABEÇALHO === */
+.nav-logo {
+    display: block;
+    width: 200px; /* Largura do logo no cabeçalho */
+    height: 40px; /* Altura do logo no cabeçalho */
+    background-image: var(--logo-image);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center left;
+    transition: transform 0.3s;
+}
+.nav-logo:hover { transform: scale(1.05); }
+
 .nav-menu { list-style: none; display: flex; gap: 2rem; }
 .nav-menu a {
-    color: var(--color-dark-text);
+    color: var(--text-main);
     text-decoration: none;
     font-weight: bold;
     font-size: 1rem;
@@ -102,6 +107,7 @@ section { padding: 6rem 0; overflow: hidden; }
 .theme-toggle-label .fa-moon { color: #f1c40f; }
 .theme-toggle-label .fa-sun { color: #f39c12; }
 
+
 /* TELA INICIAL (HERO) */
 .hero-section {
     height: 100vh;
@@ -109,28 +115,35 @@ section { padding: 6rem 0; overflow: hidden; }
     align-items: center;
     justify-content: center;
     text-align: center;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../fotos/fundo-hero.jpg');
-    background-size: cover;
-    background-position: center;
+    /* REMOVIDA A IMAGEM DE FUNDO, AGORA SÓ O DEGRADÊ */
+    background: linear-gradient(180deg, var(--bg-main) 0%, #2c3e50 100%);
 }
 [data-theme="light"] .hero-section {
-    background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('../fotos/fundo-hero.jpg');
+    background: linear-gradient(180deg, var(--bg-main) 0%, #dde4e9 100%);
 }
-.hero-content .hero-logo {
-    max-width: 400px;
-    margin-bottom: 2rem;
+/* === NOVAS REGRAS PARA O LOGO NO HERO === */
+.hero-logo {
+    width: 100%;
+    max-width: 450px; /* Largura máxima do logo grande */
+    height: 120px;     /* Altura do logo grande */
+    margin: 0 auto 2rem auto;
+    background-image: var(--logo-image);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
     animation: pulse-glow 4s infinite ease-in-out;
 }
+
 .hero-content h1 {
     font-size: 2.5rem;
-    color: var(--color-dark-text);
+    color: var(--text-main);
 }
-[data-theme="light"] .hero-content h1 { color: var(--color-light-text); }
 .cursor {
     animation: blink 0.7s infinite;
     color: var(--color-accent);
 }
 
+/* O resto do CSS continua igual... */
 /* SEÇÃO SOBRE */
 .about-section { background-color: var(--bg-secondary); }
 .about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;}
@@ -254,7 +267,7 @@ section { padding: 6rem 0; overflow: hidden; }
     }
 }
 
-/* ============== NOVA SEÇÃO INSTAGRAM ADICIONADA AQUI ============== */
+/* SEÇÃO INSTAGRAM */
 .instagram-section {
     background-color: var(--bg-main);
     padding: 6rem 0;
@@ -272,7 +285,6 @@ section { padding: 6rem 0; overflow: hidden; }
     max-width: 600px;
     margin: 0 auto 3rem auto;
 }
-
 
 /* SEÇÃO ORÇAMENTO */
 .quote-form {
@@ -324,11 +336,6 @@ button:hover { transform: scale(1.05); }
 }
 @keyframes blink { 50% { opacity: 0; } }
 @keyframes rotate-gear { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-@keyframes scroll {
-    to {
-        transform: translate(-50%);
-    }
-}
 
 .animate-on-scroll { opacity: 0; transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
 .animate-on-scroll[data-animation="slide-in-left"] { transform: translateX(-50px); }
