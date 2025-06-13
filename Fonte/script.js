@@ -134,7 +134,27 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelector(this.getAttribute('href')).scrollIntoView({
                 behavior: 'smooth'
             });
-        });
-    });
+        // LÓGICA PARA O CARROSSEL DE LOGOS INFINITO
+    const scrollers = document.querySelectorAll(".scroller");
 
-});
+    // Se o usuário não tiver a preferência por movimento reduzido, adiciona a animação
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        addAnimation();
+    }
+
+    function addAnimation() {
+        scrollers.forEach((scroller) => {
+            // Adiciona um atributo para o CSS saber que a animação deve começar
+            scroller.setAttribute("data-animated", true);
+
+            const scrollerInner = scroller.querySelector(".scroller__inner");
+            const scrollerContent = Array.from(scrollerInner.children);
+
+            // Duplica os itens do carrossel para criar o efeito de loop infinito
+            scrollerContent.forEach((item) => {
+                const duplicatedItem = item.cloneNode(true);
+                duplicatedItem.setAttribute("aria-hidden", true);
+                scrollerInner.appendChild(duplicatedItem);
+            });
+        });
+    }
