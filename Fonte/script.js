@@ -31,14 +31,16 @@ document.addEventListener('DOMContentLoaded', () => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
                 // Ativar contadores quando a seção estiver visível
-                if (entry.target.id === 'clientes') {
+                // CORREÇÃO: O ID da seção foi atualizado para 'especialistas'
+                if (entry.target.id === 'especialistas') {
                     startCounters();
                 }
             }
         });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll('.animate-on-scroll, #clientes').forEach(el => {
+    // CORREÇÃO: O seletor também foi atualizado para observar a nova seção
+    document.querySelectorAll('.animate-on-scroll, #especialistas').forEach(el => {
         observer.observe(el);
     });
 
@@ -59,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     counter.innerText = `${Math.ceil(currentValue + increment)}`;
                     setTimeout(updateCounter, 10);
                 } else {
-                    counter.innerText = target;
+                    counter.innerText = new Intl.NumberFormat('pt-BR').format(target);
                 }
             };
             updateCounter();
@@ -116,7 +118,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // SELETOR DE TEMA (DARK/LIGHT)
     const themeToggle = document.getElementById('theme-toggle');
-    // Verifica o tema salvo ou o padrão do sistema
     const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     document.documentElement.setAttribute('data-theme', savedTheme);
     themeToggle.checked = savedTheme === 'light';
@@ -134,23 +135,22 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelector(this.getAttribute('href')).scrollIntoView({
                 behavior: 'smooth'
             });
-        // LÓGICA PARA O CARROSSEL DE LOGOS INFINITO
+        });
+    });
+
+    // --- CORREÇÃO: LÓGICA DO CARROSSEL MOVIDA PARA O LOCAL CORRETO ---
     const scrollers = document.querySelectorAll(".scroller");
 
-    // Se o usuário não tiver a preferência por movimento reduzido, adiciona a animação
     if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
         addAnimation();
     }
 
     function addAnimation() {
         scrollers.forEach((scroller) => {
-            // Adiciona um atributo para o CSS saber que a animação deve começar
             scroller.setAttribute("data-animated", true);
-
             const scrollerInner = scroller.querySelector(".scroller__inner");
             const scrollerContent = Array.from(scrollerInner.children);
 
-            // Duplica os itens do carrossel para criar o efeito de loop infinito
             scrollerContent.forEach((item) => {
                 const duplicatedItem = item.cloneNode(true);
                 duplicatedItem.setAttribute("aria-hidden", true);
@@ -158,3 +158,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+    // --- FIM DA LÓGICA DO CARROSSEL ---
+
+}); // Fim do document.addEventListener
