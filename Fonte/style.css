@@ -190,31 +190,85 @@ section { padding: 6rem 0; overflow: hidden; }
 .icon-gear::after { transform: rotate(90deg); }
 /* ... (outros ícones podem ser adicionados) ... */
 
-/* SEÇÃO CLIENTES */
-.clients-section { background-color: var(--bg-secondary); }
-.clients-logos {
-    display: flex; justify-content: center; align-items: center;
-    gap: 3rem; flex-wrap: wrap; margin-bottom: 4rem;
+/* ============== NOVA SEÇÃO ESPECIALISTAS (CARROSSEL) ============== */
+.experts-section { 
+    background-color: var(--bg-secondary);
+    padding: 6rem 0;
 }
-.css-logo {
-    padding: 1rem 2rem; font-weight: bold; font-size: 1.5rem;
-    border: 2px solid var(--border-color);
-    animation: pulse-logo 5s infinite ease-in-out;
-}
-.css-logo.cat { color: #FFCD11; border-color: #FFCD11; }
-.css-logo.cummins { color: #C8102E; border-color: #C8102E; }
-.css-logo.volvo { color: #0066CC; border-color: #0066CC; }
-.css-logo.mercedes { color: #CCCCCC; border-color: #CCCCCC; }
-.css-logo.scania { color: #041E42; border-color: #041E42; }
-[data-theme="dark"] .css-logo.scania { color: #FFFFFF; border-color: #FFFFFF; }
 
-
+/* Estilos para os contadores, que agora estão nesta seção */
 .stats-counter {
-    display: flex; justify-content: space-around; text-align: center;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    margin-top: 4rem;
+    margin-bottom: 5rem;
 }
-.stat-item h3 { font-size: 3rem; color: var(--color-accent); }
+.stat-item h3 { font-size: 3rem; color: var(--color-accent); font-weight: 900; }
 .stat-item p { color: var(--text-secondary); }
 
+
+/* Estilos para o Carrossel Infinito */
+.scroller {
+    max-width: 900px;
+    margin: auto;
+    overflow: hidden;
+    -webkit-mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+    mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+}
+
+.scroller__inner {
+    display: flex;
+    gap: 1.5rem;
+    padding-block: 1rem;
+    list-style: none;
+    /* A animação será adicionada via JS para evitar problemas de repetição */
+}
+
+.scroller[data-animated="true"] .scroller__inner {
+    width: max-content;
+    flex-wrap: nowrap;
+    animation: scroll 40s linear infinite;
+}
+
+.scroller[data-speed="fast"] .scroller__inner {
+    animation-duration: 20s;
+}
+
+.scroller[data-speed="slow"] .scroller__inner {
+    animation-duration: 60s;
+}
+
+/* Pausa a animação ao passar o mouse */
+.scroller__inner:hover {
+    animation-play-state: paused;
+}
+
+
+/* Estilos para os itens (logos) dentro do carrossel */
+.tag-list li {
+    padding: 1rem 2rem;
+    background-color: var(--bg-main);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    cursor: default;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.tag-list li:hover {
+    background-color: var(--color-accent);
+    color: white;
+    border-color: var(--color-accent);
+}
+
+@keyframes scroll {
+    to {
+        transform: translate(-50%);
+    }
+}
 /* SEÇÃO ORÇAMENTO */
 .quote-form {
     max-width: 800px; margin: auto; background: var(--bg-secondary);
