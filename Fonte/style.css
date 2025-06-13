@@ -16,6 +16,7 @@
     --font-main: 'Helvetica', 'Arial', sans-serif;
 }
 
+/* === LÓGICA DO LOGO DEFINIDA AQUI === */
 [data-theme="dark"] {
     --bg-main: var(--color-dark-bg);
     --bg-secondary: var(--color-dark-bg-secondary);
@@ -65,12 +66,12 @@ section { padding: 6rem 0; overflow: hidden; }
 }
 .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; }
 
-/* === NOVAS REGRAS PARA O LOGO NO CABEÇALHO === */
+/* === REGRAS CORRIGIDAS PARA O LOGO NO CABEÇALHO === */
 .nav-logo {
     display: block;
     width: 200px; /* Largura do logo no cabeçalho */
     height: 40px; /* Altura do logo no cabeçalho */
-    background-image: var(--logo-image);
+    background-image: var(--logo-image); /* Aplica a variável do logo */
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center left;
@@ -107,7 +108,6 @@ section { padding: 6rem 0; overflow: hidden; }
 .theme-toggle-label .fa-moon { color: #f1c40f; }
 .theme-toggle-label .fa-sun { color: #f39c12; }
 
-
 /* TELA INICIAL (HERO) */
 .hero-section {
     height: 100vh;
@@ -115,19 +115,19 @@ section { padding: 6rem 0; overflow: hidden; }
     align-items: center;
     justify-content: center;
     text-align: center;
-    /* REMOVIDA A IMAGEM DE FUNDO, AGORA SÓ O DEGRADÊ */
     background: linear-gradient(180deg, var(--bg-main) 0%, #2c3e50 100%);
 }
 [data-theme="light"] .hero-section {
     background: linear-gradient(180deg, var(--bg-main) 0%, #dde4e9 100%);
 }
-/* === NOVAS REGRAS PARA O LOGO NO HERO === */
+
+/* === REGRAS CORRIGIDAS PARA O LOGO NO HERO === */
 .hero-logo {
     width: 100%;
-    max-width: 450px; /* Largura máxima do logo grande */
-    height: 120px;     /* Altura do logo grande */
+    max-width: 450px;
+    height: 120px;
     margin: 0 auto 2rem auto;
-    background-image: var(--logo-image);
+    background-image: var(--logo-image); /* Aplica a variável do logo */
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -143,7 +143,6 @@ section { padding: 6rem 0; overflow: hidden; }
     color: var(--color-accent);
 }
 
-/* O resto do CSS continua igual... */
 /* SEÇÃO SOBRE */
 .about-section { background-color: var(--bg-secondary); }
 .about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;}
@@ -312,7 +311,6 @@ button {
 }
 button:hover { transform: scale(1.05); }
 .form-step label { display: block; margin-bottom: 1rem; }
-
 
 /* SEÇÃO CONTATO E FOOTER */
 .contact-wrapper { display: grid; grid-template-columns: 2fr 1fr; gap: 3rem; }
