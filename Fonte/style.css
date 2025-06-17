@@ -132,12 +132,12 @@ section { padding: 6rem 0; overflow: hidden; }
 /* === LÓGICA DE TROCA DE LOGO (VERSÃO FINAL CORRIGIDA) === */
 [data-theme="dark"] .nav-logo,
 [data-theme="dark"] .hero-logo {
-    background-image: url('../fotos/logo-retiblocosBRANCO.png'); /* TEMA ESCURO USA LOGO BRANCO */
+    background-image: url('../fotos/logo-retiblocosPRETO.png'); /* TEMA ESCURO USA LOGO BRANCO */
 }
 
 [data-theme="light"] .nav-logo,
 [data-theme="light"] .hero-logo {
-    background-image: url('../fotos/logo-retiblocosPRETO.png'); /* TEMA CLARO USA LOGO PRETO */
+    background-image: url('../fotos/logo-retiblocosBRANCO.png'); /* TEMA CLARO USA LOGO PRETO */
 }
 
 .hero-content h1 {
@@ -350,7 +350,86 @@ button:hover { transform: scale(1.05); }
 .animate-on-scroll[data-animation="slide-in-right"] { transform: translateX(50px); }
 .animate-on-scroll[data-animation="zoom-in"] { transform: scale(0.9); }
 .animate-on-scroll.visible { opacity: 1; transform: translate(0, 0) scale(1); }
+/* ============== NOVA SEÇÃO DE LOCALIZAÇÃO E CONTATO ============== */
+.location-section {
+    background-color: var(--bg-secondary);
+}
 
+.location-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    background-color: var(--bg-main);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.map-container {
+    height: 450px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.location-details h3 {
+    font-size: 2rem;
+    color: var(--text-main);
+    margin-bottom: 2rem;
+}
+
+.info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-secondary);
+}
+
+.info-item i {
+    color: var(--color-accent);
+    font-size: 1.2rem;
+    margin-top: 5px;
+}
+
+.info-item p {
+    margin: 0;
+    line-height: 1.6;
+}
+
+.info-item a {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: text-decoration 0.3s;
+}
+
+.info-item a:hover {
+    text-decoration: underline;
+}
+
+.btn-map {
+    display: inline-block;
+    background-color: var(--color-accent);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 1rem;
+    transition: transform 0.3s;
+}
+
+.btn-map:hover {
+    transform: scale(1.05);
+}
+
+/* Ajustes para telas menores */
+@media (max-width: 992px) {
+    .location-wrapper {
+        grid-template-columns: 1fr;
+    }
+}
 @media (max-width: 768px) {
     h2 { font-size: 2rem; }
     .nav-menu { display: none; }
