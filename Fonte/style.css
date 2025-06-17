@@ -132,12 +132,12 @@ section { padding: 6rem 0; overflow: hidden; }
 /* === LÓGICA DE TROCA DE LOGO (VERSÃO FINAL 100% CORRIGIDA) === */
 [data-theme="dark"] .nav-logo,
 [data-theme="dark"] .hero-logo {
-    background-image: url('../fotos/logo-retiblocosBRANCO.png'); /* TEMA ESCURO USA LOGO BRANCO */
+    background-image: url('../fotos/logo-retiblocosPRETO.png'); /* TEMA ESCURO USA LOGO BRANCO */
 }
 
 [data-theme="light"] .nav-logo,
 [data-theme="light"] .hero-logo {
-    background-image: url('../fotos/logo-retiblocosPRETO.png'); /* TEMA CLARO USA LOGO PRETO */
+    background-image: url('../fotos/logo-retiblocosBRANCO.png'); /* TEMA CLARO USA LOGO PRETO */
 }
 
 .hero-content h1 {
