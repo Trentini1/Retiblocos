@@ -129,15 +129,15 @@ section { padding: 6rem 0; overflow: hidden; }
     animation: pulse-glow 4s infinite ease-in-out;
 }
 
-/* === LÓGICA DE TROCA DE LOGO (VERSÃO FINAL CORRIGIDA) === */
+/* === LÓGICA DE TROCA DE LOGO (VERSÃO FINAL 100% CORRIGIDA) === */
 [data-theme="dark"] .nav-logo,
 [data-theme="dark"] .hero-logo {
-    background-image: url('../fotos/logo-retiblocosPRETO.png'); /* TEMA ESCURO USA LOGO BRANCO */
+    background-image: url('../fotos/logo-retiblocosBRANCO.png'); /* TEMA ESCURO USA LOGO BRANCO */
 }
 
 [data-theme="light"] .nav-logo,
 [data-theme="light"] .hero-logo {
-    background-image: url('../fotos/logo-retiblocosBRANCO.png'); /* TEMA CLARO USA LOGO PRETO */
+    background-image: url('../fotos/logo-retiblocosPRETO.png'); /* TEMA CLARO USA LOGO PRETO */
 }
 
 .hero-content h1 {
@@ -148,8 +148,6 @@ section { padding: 6rem 0; overflow: hidden; }
     animation: blink 0.7s infinite;
     color: var(--color-accent);
 }
-
-/* ... O RESTO DO CSS CONTINUA IGUAL ... */
 
 /* SEÇÃO SOBRE */
 .about-section { background-color: var(--bg-secondary); }
@@ -267,8 +265,6 @@ section { padding: 6rem 0; overflow: hidden; }
     color: white;
     border-color: var(--color-accent);
 }
-.tag-list li.deutz { color: #0087D1; } /* Exemplo de cor para Deutz */
-.tag-list li.weichai { color: #D42E28; } /* Exemplo de cor para Weichai */
 
 @keyframes scroll {
     to {
@@ -282,11 +278,9 @@ section { padding: 6rem 0; overflow: hidden; }
     padding: 6rem 0;
     border-top: 1px solid var(--border-color);
 }
-
 .instagram-section h2 {
     margin-bottom: 1rem;
 }
-
 .section-subtitle {
     text-align: center;
     color: var(--text-secondary);
@@ -322,39 +316,10 @@ button {
 button:hover { transform: scale(1.05); }
 .form-step label { display: block; margin-bottom: 1rem; }
 
-/* SEÇÃO CONTATO E FOOTER */
-.contact-wrapper { display: grid; grid-template-columns: 2fr 1fr; gap: 3rem; }
-.contact-info p { display: flex; align-items: center; gap: 10px; margin-bottom: 1rem; }
-.contact-info i { color: var(--color-accent); }
-.main-footer {
-    background-color: var(--bg-secondary); padding: 2rem 0; text-align: center;
-    border-top: 3px solid var(--color-accent);
-}
-.footer-social a {
-    color: var(--text-secondary); margin: 0 1rem; font-size: 1.5rem;
-    transition: color 0.3s, transform 0.3s;
-    display: inline-block;
-}
-.footer-social a:hover { color: var(--color-accent); transform: translateY(-5px); }
-
-/* ANIMAÇÕES GERAIS E RESPONSIVIDADE */
-@keyframes pulse-glow {
-    0%, 100% { filter: drop-shadow(0 0 5px rgba(243, 122, 34, 0.3)); transform: scale(1); }
-    50% { filter: drop-shadow(0 0 20px rgba(243, 122, 34, 0.7)); transform: scale(1.05); }
-}
-@keyframes blink { 50% { opacity: 0; } }
-@keyframes rotate-gear { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-
-.animate-on-scroll { opacity: 0; transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
-.animate-on-scroll[data-animation="slide-in-left"] { transform: translateX(-50px); }
-.animate-on-scroll[data-animation="slide-in-right"] { transform: translateX(50px); }
-.animate-on-scroll[data-animation="zoom-in"] { transform: scale(0.9); }
-.animate-on-scroll.visible { opacity: 1; transform: translate(0, 0) scale(1); }
-/* ============== NOVA SEÇÃO DE LOCALIZAÇÃO E CONTATO ============== */
+/* SEÇÃO DE LOCALIZAÇÃO E CONTATO */
 .location-section {
     background-color: var(--bg-secondary);
 }
-
 .location-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -365,19 +330,16 @@ button:hover { transform: scale(1.05); }
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
-
 .map-container {
     height: 450px;
     border-radius: 10px;
     overflow: hidden;
 }
-
 .location-details h3 {
     font-size: 2rem;
     color: var(--text-main);
     margin-bottom: 2rem;
 }
-
 .info-item {
     display: flex;
     align-items: flex-start;
@@ -385,28 +347,23 @@ button:hover { transform: scale(1.05); }
     margin-bottom: 1.5rem;
     color: var(--text-secondary);
 }
-
 .info-item i {
     color: var(--color-accent);
     font-size: 1.2rem;
     margin-top: 5px;
 }
-
 .info-item p {
     margin: 0;
     line-height: 1.6;
 }
-
 .info-item a {
     color: var(--color-accent);
     text-decoration: none;
     transition: text-decoration 0.3s;
 }
-
 .info-item a:hover {
     text-decoration: underline;
 }
-
 .btn-map {
     display: inline-block;
     background-color: var(--color-accent);
@@ -419,22 +376,14 @@ button:hover { transform: scale(1.05); }
     margin-top: 1rem;
     transition: transform 0.3s;
 }
-
 .btn-map:hover {
     transform: scale(1.05);
 }
 
-/* Ajustes para telas menores */
-@media (max-width: 992px) {
-    .location-wrapper {
-        grid-template-columns: 1fr;
-    }
+/* FOOTER */
+.main-footer {
+    background-color: var(--bg-secondary); padding: 2rem 0; text-align: center;
+    border-top: 3px solid var(--color-accent);
 }
-@media (max-width: 768px) {
-    h2 { font-size: 2rem; }
-    .nav-menu { display: none; }
-    .about-content, .contact-wrapper { grid-template-columns: 1fr; }
-    .services-grid { grid-template-columns: 1fr; }
-    .stats-counter { flex-direction: column; gap: 2rem; }
-    .tag-list li { font-size: 1.2rem; padding: 0.8rem 1.5rem;}
-}
+.footer-social a {
+    color: var(--text-secondary); margin: 0
